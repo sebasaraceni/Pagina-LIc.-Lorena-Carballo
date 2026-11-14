@@ -569,15 +569,10 @@ Un espacio real y humano para hablar de salud mental, emociones y vínculos a pa
 <div class="rv"><span class="eyebrow" style="color:#7A4636">Suscripción</span>
 <h2>Recibí las notas y los avisos en tu <em>mail</em></h2>
 <p class="l">Una vez por mes, como mucho: notas nuevas, episodios de Consultorio Abierto.</p></div>
-<form class="sf rv" id="sub" style="--d:.1s" novalidate>
-<label>Tu mail<input type="email" name="mail" autocomplete="email" placeholder="nombre@correo.com" required></label>
-<div style="display:grid;gap:8px"><label class="ck"><input type="checkbox" name="i" value="Notas nuevas" checked> Notas nuevas</label>
-<label class="ck"><input type="checkbox" name="i" value="Episodios de Consultorio Abierto" checked> Episodios de Consultorio Abierto</label>
-</div>
-<label class="ck"><input type="checkbox" name="ok" required> Acepto que usen mi mail solo para enviarme esto. Puedo darme de baja cuando quiera.</label>
-<button class="btn b-coral" type="submit">Suscribirme</button>
+<div class="sf rv" style="--d:.1s">
+<div data-reach-form="46d11512-ed4a-4421-8aae-d249f22ca6a7"></div>
 <p class="fine">Sin spam. No hace falta contar nada personal acá.</p>
-</form>
+</div>
 </div>
 </section>
 
@@ -687,15 +682,6 @@ NG.innerHTML=NOTAS.map((n,i)=>`<button class="nc${i===0?' big':''}" data-i="${i}
 NG.onclick=e=>{const c=e.target.closest('.nc');if(!c)return;const n=NOTAS[c.dataset.i];$('#rt').textContent=n.t;$('#rh').textContent=n.h;$('#rb').innerHTML=n.b.map(p=>'<p>'+p+'</p>').join('');RD.showModal()};
 RD.addEventListener('click',e=>{if(e.target===RD)RD.close()});
 $$('.fl').forEach(b=>b.onclick=()=>{$$('.fl').forEach(o=>o.setAttribute('aria-pressed',o===b));$$('.nc').forEach(c=>c.hidden=!(b.dataset.f==='todas'||c.dataset.f===b.dataset.f))});
-/* ===== SUSCRIPCIÓN: pegar acá la dirección del servicio de mails (Hostinger Reach, Brevo, MailerLite). Mientras esté vacío, se arma un mail para Lorena ===== */
-const SUSCRIPCION_URL='';
-$('#sub').addEventListener('submit',e=>{e.preventDefault();const f=e.target,m=f.mail.value.trim();
-if(!/^\S+@\S+\.\S+$/.test(m)){toast('Revisá que el mail esté bien escrito');return}
-if(!f.ok.checked){toast('Tildá la casilla de aceptación para continuar');return}
-const ints=[...f.querySelectorAll('[name=i]:checked')].map(x=>x.value);
-if(SUSCRIPCION_URL){fetch(SUSCRIPCION_URL,{method:'POST',mode:'no-cors',body:new FormData(f)}).then(()=>{toast('¡Listo! Ya estás suscripto/a');f.reset()});return}
-location.href='mailto:lic.lorenacarballo@gmail.com?subject='+encodeURIComponent('Suscripción a notas y avisos')+'&body='+encodeURIComponent('Hola Lorena, quiero suscribirme.\nMail: '+m+'\nMe interesa: '+(ints.join(', ')||'todo'))});
-
 /* ===== PORTADA: "¿Qué te trae por acá hoy?" ===== */
 const QA=[["Cuando la cabeza no para","Podemos entender qué alimenta tus preocupaciones y trabajar con herramientas concretas para esos momentos en los que te cuesta bajar un cambio.","Ansiedad","Adulto"],["Cuando algo se repite en la relación","La terapia de pareja ofrece un espacio para hablar de lo que cuesta decir, entender cómo se dan las discusiones o la distancia y ensayar otras formas de conversar.","Pareja","Pareja"],["Un espacio propio en la adolescencia","Un espacio de escucha para adolescentes, donde puedan hablar de lo que les pasa a su ritmo. Cuando hace falta, también ofrezco orientación a las familias.","Adolescencia","Adolescente"],["Cuando cuesta desconectar del trabajo","Si la presión o el cansancio del trabajo te siguen acompañando al terminar el día, podemos explorar qué te está desgastando y qué cambios o límites son posibles.","Trabajo","Adulto"],["Cuando algo cambia y cuesta seguir","Una pérdida, una separación o un cambio importante pueden desordenar lo cotidiano. Te acompaño a poner en palabras lo que estás viviendo y a encontrar tu manera de seguir, a tu ritmo.","todas","Adulto"],["Psicología laboral para empresas","Realizo entrevistas y evaluaciones psicodiagnósticas laborales para aportar información a los procesos de selección, en función del puesto. También ofrezco charlas para equipos.","empresas","Empresa u organización"]];
 let qi=0;
@@ -713,5 +699,6 @@ const m='Hola Lorena, quiero '+'pedir un turno.'+'\nNombre: '+n+'\nConsulta: '+d
 window.open('https://wa.me/543754474713?text='+encodeURIComponent(m),'_blank','noopener');
 });
 </script>
+<script src="https://cdn-reach.hostinger.com/js/embed.js"></script>
 </body>
 </html>
