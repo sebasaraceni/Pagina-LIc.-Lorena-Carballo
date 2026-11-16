@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /fotos/web/
 Disallow: /fotos/
 
 Sitemap: https://lorenacarballo.com/sitemap.xml
